@@ -103,6 +103,38 @@ b)  Load the data for both years into R. Check the type of the count
     some of the counts are inaccurate because of this. Explain your
     solution and the repercussions.
 
+    ```{r}
+    #Loading required libraries 
+    library(readr) 
+    library(dplyr) 
+    #Loading data 
+    vornamen_2023 <- read_csv("/Users/hannahstrobel/Documents/Studium/8_Semester/2_stat_Software/0_Graded_Excercises/3_Ex/2024-exeRcise-sheet-3/vornamen-muenchen-2023.csv") 
+    vornamen_2022 <- read_csv("/Users/hannahstrobel/Documents/Studium/8_Semester/2_stat_Software/0_Graded_Excercises/3_Ex/2024-exeRcise-sheet-3/vornamen-muenchen-2022.csv") 
+
+    #Overview 
+    str(vornamen_2022) 
+    head(vornamen_2022, 10) 
+    str(vornamen_2023) 
+    head(vornamen_2023, 10) 
+
+    #Examination of 'Anzahl' 
+    head(vornamen_2022$Anzahl,10) 
+    head(vornamen_2023$Anzahl,10) 
+
+    #Removing non-numeric characters from the ‘Anzahl’ column and converting them to numeric values 
+
+    vornamen_2023 <- vornamen_2023 %>%
+      mutate(Anzahl = as.numeric(gsub("[^0-9]", "", Anzahl)))
+
+    vornamen_2022 <- vornamen_2022 %>%
+      mutate(Anzahl = as.numeric(gsub("[^0-9]", "", Anzahl)))
+
+
+    #Review 
+    head(vornamen_2023,10) 
+    head(vornamen_2022,10) 
+    ```
+
 c)  Calculate the total number of babies born in Munich in 2022
     and 2023. Which year had the bigger baby-boom?
 
