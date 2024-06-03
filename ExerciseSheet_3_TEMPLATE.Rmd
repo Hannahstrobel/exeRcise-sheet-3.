@@ -281,6 +281,38 @@ f)  Create a meaningful plot / figure with the dataset. Make sure to
     provide a figure caption (via the chunk options / Rmarkdown) and
     correctly label the figure.
 
+    ```{r Trends in Marriage Status of LGBT Individuals (2015-2017)}
+    #Loading required packages 
+    library(ggplot2) 
+    #Creating the plot 
+    plot <- ggplot(lgbt_mariage, 
+                   aes(x = Year)) + 
+      geom_line(aes(y = `% LGBT Married to same-sex spouse`, 
+                    color = "Same-Sex"), 
+                linetype = "solid") + 
+      geom_line(aes(y = `% LGBT Married to opposite-sex spouse`, 
+                    color = "Opposite-Sex"), 
+                linetype = "dashed") + 
+      geom_point(data = lgbt_mariage %>% 
+                   filter(Year %in% c(2015, 2016, 2017)),
+                 aes(y = `% LGBT Married to same-sex spouse`, 
+                     color = "Same-Sex"), 
+                 size = 3) + 
+      geom_point(data = lgbt_mariage %>% 
+                   filter(Year %in% c(2015, 2016, 2017)), 
+                 aes(y = `% LGBT Married to opposite-sex spouse`, 
+                     color = "Opposite-Sex"), 
+                 size = 3) + 
+      labs(x = "Year", 
+           y = "% of LGBT Married", 
+           title = "Trends in Marriage Status of LGBT Individuals (2015-2017)", 
+           caption = "Data source: LGBT Marital Status in the US Gallup 2017") + scale_color_manual(values = c("blue", "red")) + 
+      theme_minimal() 
+
+    #Printing the plot 
+    plot 
+    ```
+
 ## Final Note
 
 Make sure to push all your commits and changes to GitHub before
