@@ -135,8 +135,36 @@ b)  Load the data for both years into R. Check the type of the count
     head(vornamen_2022,10) 
     ```
 
+    *The solution is to remove all non-numeric characters from the
+    'Anzahl' column and convert the cleaned values into numeric values.*
+
+    ***Repercussions***
+
+    1.  *Data Loss:\
+        This approach will remove all the characters that are not
+        numeric (e.g. '4 oder weniger') and will only keep the numeric
+        parts. This means that '4 oder weniger' will become '4',
+        resulting in a loss of data.*
+    2.  *Inaccuracies:\
+        On top of that some values could be changed during the cleanup,
+        which could lead to inaccuracies. For example there could be an
+        overestimation or underestimation of the actual number.*
+    3.  *Incorrect Values:\
+        If there are values that are completely non-numeric and are
+        therefore converted to 'NA', this could affect the data analysis
+        if these missing values are not handled correctly.\
+        \
+        \
+        Despite these repercussions, this cleaning is often necessary to
+        bring the data into a usable form.*
+    4.  
+
 c)  Calculate the total number of babies born in Munich in 2022
     and 2023. Which year had the bigger baby-boom?
+
+    ```{r}
+
+    ```
 
 d)  Add a new column `year` to both datasets which holds the correct
     year for each.
