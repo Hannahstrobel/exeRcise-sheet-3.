@@ -234,6 +234,18 @@ d)  Come up with a (research) question you want to answer with the data
     within one sentence. It should be a question that can be answered
     with the dataset and using R.
 
+    ***Research Question***
+
+    *How has the marriage status of LGBT people in the USA changed
+    between 2015 and 2017?*
+
+    ***Explanation***\
+    *Understanding the dynamics of marriage status among LGBT
+    individuals over this time frame provides valuable insights into the
+    progress of legal recognition and societal acceptance of same-sex
+    relationships, reflecting broader shifts in attitudes and policies
+    toward LGBTQ+ rights in the United States.*
+
 e)  Use R to answer your chosen question.
 
 f)  Create a meaningful plot / figure with the dataset. Make sure to
