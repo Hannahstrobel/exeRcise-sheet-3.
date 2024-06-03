@@ -248,6 +248,35 @@ d)  Come up with a (research) question you want to answer with the data
 
 e)  Use R to answer your chosen question.
 
+    ```{r}
+    #Loading dataset 
+    lgbt_mariage <- read_csv("//Users/hannahstrobel/Documents/Studium/8_Semester/2_stat_Software/0_Graded_Excercises/3_Ex/2024-exeRcise-sheet-3/LGBT Marital Status in the US (Gallup 2017).csv") 
+
+    #Exploring the structure 
+    str(lgbt_mariage) 
+    head(lgbt_mariage)
+
+    #Show important variables for the reasearch question 
+    lgbt_mariage$`% LGBT Married to same-sex spouse` 
+    lgbt_mariage$`% LGBT Married to opposite-sex spouse` 
+
+    #Table for comparison 
+    marriage_table <- lgbt_mariage %>% 
+      select(Year, `% LGBT Married to same-sex spouse`, `% LGBT Married to opposite-sex spouse`) %>% 
+      mutate(Year = as.character(Year)) %>% 
+      rename(`% LGBT Married to same-sex spouse` = `% LGBT Married to same-sex spouse`, `% LGBT Married to opposite-sex spouse` = `% LGBT Married to opposite-sex spouse`) %>% 
+      as.data.frame() 
+
+    rownames(marriage_table) <- marriage_table$Year 
+    marriage_table$Year <- NULL 
+    kable(marriage_table, caption = "% LGBT Marriage") 
+    ```
+
+    *Since the legalisation of same-sex marriage in the United States in
+    2015, the number of same-sex marriages has been steadily increasing.
+    While the number of queer people who married opposite-sex people
+    initially fell, only to rise surprisingly in 2017.*
+
 f)  Create a meaningful plot / figure with the dataset. Make sure to
     provide a figure caption (via the chunk options / Rmarkdown) and
     correctly label the figure.
