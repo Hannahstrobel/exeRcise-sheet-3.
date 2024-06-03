@@ -199,6 +199,20 @@ f)  Combine the counts for same names to determine the most popular
     names across both years. Print out the top 10 names in a nicely
     formatted table for both years. Include a table caption.
 
+    ```{r}
+    #Loading required library 
+    library(knitr) 
+
+    #Group by name and adding up the number of occurrences 
+    popular_names <- combined_dataset %>% group_by(Vorname) %>% summarise(Total_Count = sum(Anzahl, na.rm = TRUE)) %>% arrange(desc(Total_Count)) 
+    #Printing the top 10 names 
+    top_names <- popular_names %>% slice_head(n = 10) 
+
+    #Formatted table with caption 
+    cat("### Top 10 Names:\n") 
+    kable(top_names, caption = "Top 10 Names with their Total Counts") 
+    ```
+
 ## Exercise 4: Open Analysis (4 points)
 
 This exercise is a bit more open-ended. You can choose any dataset from
